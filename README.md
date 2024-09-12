@@ -74,6 +74,38 @@ Este proceso se encarga de proveer el servicio de HE para TimWE ME. En dado caso
 Para testear si el cambio aplicado esta andando, solo tenemos que completar la siguiente url con los datos `http://hulk.opratel.com/he-timwe-me/?o={operador}&callback={url}`, esto debería ejecutar el proceso para obtener HE y redireccionarnos a la url callback compartida.
 
 
+-----
+
+
+# OPRASTORE: 172.30.1.145
+
+Almacena Oprastore [backend](https://github.com/opratel-core/plattform_oprastorev2) / [frontend](https://github.com/opratel-core/platform_oprastorev2_front) junto a [pixel-notification-os](https://github.com/opratel-core/tool-pixel-notification-os) (no confundir con [pixel-notification](https://github.com/opratel-core/tool-pixel-notification)) el cual se encarga de las notificacioens off-line de Dizzb.
+
+
+## PIXEL NOTIFICATION OS - OPRASTORE
+
+###### ubicación
+
+> oprastore:/var/scripts/pixelNotification
+
+###### logs
+> oprastore:/var/scripts/pixelNotification/logs
+
+###### repositorio
+[pixel-notification-os](https://github.com/opratel-core/tool-pixel-notification-os)
+
+Este proceso se encarga de levantar los pixeles de la tabla **ma_campaigns**
+ubicada en la db de oprastore y notificarlos a el api [google-ads-offline-conversions](https://github.com/opratel-core/google-ads-offline-conversions/tree/v16)
+
+###### sumar nuevo proveedor-portal
+
+Para sumar un nuevo **proveedor-portal**  necesitamos buscar dentro del archivo de configuración, el network al que se va a listar, luego añadir los varlores, **conversionMap** y **valueaMap**. 
+
+En el caso de **conversionMap** necesitamos sumar el key **proveedor-portal** y le sumamos el valor según la red; para **valueaMap** aplica lo mismo pero sumandole el valor que le corresponda.
+
+Luego de sumar el **proveedor-portal** podemos tomar de ejemplo un registro de **ma_campaigns**, clonarlo e insertar los valores que correspondan a el **proveedor-portal** registrado.
+
+Terminado el proceso podremos revisar en los logs las operaciones llevadas a cabo y ver si el pixel pudo ser procesado de una manera correcta.
 
 
 
